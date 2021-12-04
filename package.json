@@ -1,0 +1,20 @@
+{
+  "name": "youtube_rss",
+  "version": "1.0.0",
+  "description": "api server mainly to query rss feeds of youtube users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "youtube",
+    "express",
+    "rss"
+  ],
+  "author": "Christopher",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
