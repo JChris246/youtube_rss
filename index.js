@@ -12,6 +12,6 @@ const videosRouter = require("./routes/videos");
 app.use("/api/channels", channelsRouter);
 app.use("/api/videos", videosRouter);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log("Listening on " + PORT));
 
 module.exports = app;

@@ -4,6 +4,6 @@ const controller = require("../controllers/channels");
 router
     .route("/")
     // search for channels
-    .get(controller.getChannels)
+    .post(controller.getChannels)
 
 module.exports = router;
