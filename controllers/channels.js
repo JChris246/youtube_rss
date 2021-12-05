@@ -1,5 +1,4 @@
 const { getRequest } = require("../request");
-const cheerio = require("cheerio");
 
 const channelRegex = RegExp('\/channel\/([^"]+)', "sig");
 
@@ -9,7 +8,7 @@ module.exports.getChannels = async (req, res) => {
         return res.status(400).send("You need to provide a 'search'");
     
     if (search.trim().length < 1)
-        return res.status(400).send("Not search for nothing");
+        return res.status(400).send("Not searching for nothing");
 
     const ids = await getChannelsIds(search);
     if (ids.length < 1)
