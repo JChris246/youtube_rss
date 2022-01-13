@@ -3,7 +3,7 @@ const { getRequest } = require("../request");
 const channelRegex = RegExp('\/channel\/([^"]+)', "sig");
 
 module.exports.getChannels = async (req, res) => {
-    let search = req.body.search;
+    let search = req.body.search || req.params.search;
     if (!search)
         return res.status(400).send("You need to provide a 'search'");
     

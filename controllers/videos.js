@@ -20,7 +20,6 @@ module.exports.getVideos = async (req, res) => {
 
         return { id, title, url, thumbnail, description, views, published, updated };
     });
-    console.log(videos.length);
 
     res.status(200).send(videos);
 };
