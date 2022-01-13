@@ -47,7 +47,7 @@ A successful response will look like:
     "channel": "https://www.youtube.com/channel/channel_id",
     "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=channel_id",
   },
-];
+]
 ```
 
 ### Get latest videos from a channel
@@ -72,5 +72,5 @@ A successful response will look like:
     "published": "2022-01-13T02:05:59+00:00",
     "updated": "2022-01-13T13:12:51+00:00",
   },
-];
+]
 ```
