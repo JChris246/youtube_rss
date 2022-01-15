@@ -1,7 +1,7 @@
 {
   "name": "youtube_rss",
   "version": "1.0.0",
-  "description": "api server mainly to query rss feeds of youtube users",
+  "description": "api server mainly to query rss feeds of youtube channels",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,8 +19,6 @@
     "url": "https://github.com/JChris246/youtube_rss"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
-    "express": "^4.17.1",
-    "puppeteer": "^12.0.1"
+    "express": "^4.17.1"
   }
 }
