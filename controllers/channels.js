@@ -1,6 +1,6 @@
 const { getRequest } = require("../request");
 
-const channelRegex = RegExp('\/channel\/([^"]+)', "sig");
+const channelRegex = RegExp('\/c\/([^"]+)', "sig");
 
 module.exports.getChannels = async (req, res) => {
     let search = req.body.search || req.params.search;
@@ -32,7 +32,7 @@ const getChannelsIds = async (search) => {
 };
 
 const getInfo = async (id) => {
-    const url = "https://www.youtube.com/channel/" + id;
+    const url = "https://www.youtube.com/c/" + id;
     const page = await getRequest(url);
     
     const channelMetadataRenderer = JSON.parse(page.match(RegExp('"channelMetadataRenderer":({.+?},.+?)},', "si"))[1]);
