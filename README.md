@@ -16,6 +16,10 @@ npm install
 node index.js 
 ```
 
+## 🐋 Docker 
+
+Should you choose to run as a docker container, the docker compose in the root of the project can be used run start the service with the command `docker-compose up -d`. With the first run, the image will be build using the Dockerfile also found in the root of the project. If you need to rebuild the image after the first run of docker compose, the image can be built with the `docker build .` command from the root of the project.
+
 ## 🚀 Endpoints
 The following endpoints are available
 
