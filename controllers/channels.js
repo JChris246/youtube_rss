@@ -1,6 +1,6 @@
 const { getRequest } = require("../request");
 
-const channelRegex = [RegExp('\/c\/([^"]+)', "sig"), RegExp('channelId[\'"]:["\']([^"\']+)', "sig")];
+const channelRegex = [RegExp('\/c\/([^"\']+)', "sig"), RegExp('channelId[\'"]:["\']([^"\']+)', "sig")];
 
 module.exports.getChannels = async (req, res) => {
     let search = req.body.search || req.params.search;
@@ -18,16 +18,26 @@ module.exports.getChannels = async (req, res) => {
     return res.status(200).send(channels);
 };
 
-const getChannelsIds = async (search) => {
+const getChannelsIds = async (search, depth=1) => {
     const searchUrl = "https://www.youtube.com/results?search_query=" + search.trim().replace(/ /g, "+");
     const page = await getRequest(searchUrl);
 
     let unique = [];
-    const ids = Array.from(page.matchAll(channelRegex[0]), m => m[1]).concat(Array.from(page.matchAll(channelRegex[1]), m => m[1]));
+    const ids = Array.from(page.matchAll(channelRegex[1]), m => m[1]);
     ids.forEach(i => {
         if (unique.filter(j => j === i.trim()).length < 1)
             unique.push(i.trim());
     });
+
+    if (depth > 0) {
+        const searches = Array.from(page.matchAll(channelRegex[0]), m => m[1]);
+        for(let i = 0; i < searches.length; i++) {
+            (await getChannelsIds(searches[i].split("/")[0], 0)).forEach(i => {
+                if (unique.filter(j => j === i.trim()).length < 1)
+                    unique.push(i.trim());
+            });
+        }
+    }
     return unique;
 };
 
