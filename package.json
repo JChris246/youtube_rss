@@ -20,6 +20,6 @@
     "url": "https://github.com/JChris246/youtube_rss"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   }
 }
