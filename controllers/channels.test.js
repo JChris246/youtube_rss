@@ -6,7 +6,7 @@ const Techlinked = {
     "channel": "https://www.youtube.com/channel/UCeeFfhMcJa1kjtfZAGskOCA", 
     "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCeeFfhMcJa1kjtfZAGskOCA", 
     "name": "TechLinked", 
-    "thumbnail": "https://yt3.ggpht.com/ytc/AMLnZu8kjW49vpvXfhMexd2K3Eybeg8Ir1hS93PcyuGPsg=s900-c-k-c0x00ffffff-no-rj" 
+    "thumbnail": "https://yt3.googleusercontent.com/_7NuLsyaCWL63spCS74vy7RGd8s5cwx0FATJTvEeew3OH5d7TuD9hGcxbrhoYcMFT4mBxaJm=s900-c-k-c0x00ffffff-no-rj" 
 };
 
 describe("Channel endpoints", () => {

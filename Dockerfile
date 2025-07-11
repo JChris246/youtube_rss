@@ -1,4 +1,4 @@
-FROM node:16.18.0-alpine
+FROM node:24.4.0-alpine
 
 RUN mkdir -p /home/youtube_rss
 WORKDIR /home/youtube_rss

@@ -12,7 +12,7 @@ cd youtube_rss
 npm install
 
 # Run the server
-# server will run on port 8080, this can be changed in the index.js file
+# server will run on port 8080, this can be changed in the index.js file (or PORT env var)
 node index.js 
 ```
 
@@ -24,12 +24,12 @@ Should you choose to run as a docker container, the docker compose in the root o
 The following endpoints are available
 
 ### Search for channels
-```
+```http
 url:    /api/channels/:search
 method: GET
 ```
 
-```
+```http
 url:    /api/channels
 method: POST
 ```
@@ -55,7 +55,7 @@ A successful response will look like:
 ```
 
 ### Get latest videos from a channel
-```
+```http
 url:    /api/videos/:id
 method: GET
 ```
