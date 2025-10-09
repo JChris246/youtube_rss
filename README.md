@@ -1,5 +1,5 @@
 # YOUTUBE_RSS
-REST api to query and parse rss feeds of youtube channels
+REST api to query and parse rss feeds of youtube channels. The server also exposes mcp endpoints that mirror the functionality of the REST endpoints.
 
 ## 📝 Getting Started
 
