@@ -45,6 +45,39 @@ describe("Channel endpoints", () => {
         expect(techlinked.name).toEqual(Techlinked.name);
         expect(techlinked.feed).toEqual(Techlinked.feed);
         expect(techlinked.thumbnail).toEqual(Techlinked.thumbnail);
-    
+    });
+
+    it("POST /api/channels should return bad request if no search provided", async () => {
+        const res = await superTestRequest
+            .post("/api/channels");
+
+        expect(res.status).toEqual(400);
+        expect(res.body.msg).toBe("You need to provide a 'search'");
+    });
+
+    it("POST /api/channels should return bad request if only whitespace search provided", async () => {
+        const res = await superTestRequest
+            .post("/api/channels")
+            .send({ search: " " });
+
+        expect(res.status).toEqual(400);
+        expect(res.body.msg).toBe("Not searching for nothing");
+    });
+
+    it("POST /api/channels should return not found if search returned no channels results", async () => {
+        const res = await superTestRequest
+            .post("/api/channels")
+            .send({ search: "t" });
+
+        expect(res.status).toEqual(404);
+        expect(res.body.msg).toBe("Could not find any channels when searching for: t");
+    });
+
+    it("GET /api/channels/:search should return not found if search returned no channels results", async () => {
+        const res = await superTestRequest
+            .get("/api/channels/t");
+
+        expect(res.status).toEqual(404);
+        expect(res.body.msg).toBe("Could not find any channels when searching for: t");
     });
 });

@@ -1,6 +1,3 @@
-# Ignoring git and cache folders
-.git
-
 # Ignoring all the markdown, docker and kubernetes files
 **/*.md
 **/*yml

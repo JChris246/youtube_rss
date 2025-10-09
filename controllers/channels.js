@@ -2,20 +2,22 @@ const { getRequest } = require("../request");
 
 const channelRegex = [RegExp('\/c\/([^"\']+)', "sig"), RegExp('channelId[\'"]:["\']([^"\']+)', "sig")];
 
-module.exports.getChannels = async (req, res) => {
-    let search = req.body.search || req.params.search;
-    if (!search)
-        return res.status(400).send("You need to provide a 'search'");
+module.exports.getChannels = async (search) => {
+    if (!search) {
+        return { success: false, code: 400, msg: "You need to provide a 'search'" }
+    }
     
-    if (search.trim().length < 1)
-        return res.status(400).send("Not searching for nothing");
+    if (search.trim().length < 1) {
+        return { success: false, code: 400, msg: "Not searching for nothing" }
+    }
 
     const ids = await getChannelsIds(search);
-    if (ids.length < 1)
-        return res.status(404).send("Could not find any channels when searching for: " + search);
+    if (ids.length < 1) {
+        return { success: false, code: 404, msg: "Could not find any channels when searching for: " + search }
+    }
 
     const channels = await Promise.all(ids.map(id => getInfo(id)));
-    return res.status(200).send(channels);
+    return { code: 200, payload: channels, success: true }
 };
 
 const getChannelsIds = async (search, depth=1) => {

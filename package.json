@@ -1,7 +1,7 @@
 {
   "name": "youtube_rss",
-  "version": "1.0.0",
-  "description": "api server mainly to query rss feeds of youtube channels",
+  "version": "1.1.0",
+  "description": "api server mainly to query rss feeds of youtube channels with mcp support",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,7 +11,8 @@
     "api",
     "youtube",
     "express",
-    "rss"
+    "rss",
+    "mcp"
   ],
   "author": "Christopher",
   "license": "MIT",
@@ -20,7 +21,10 @@
     "url": "https://github.com/JChris246/youtube_rss"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "jest": "^29.3.1",

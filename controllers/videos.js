@@ -3,8 +3,8 @@ const { getRequest } = require("../request");
 const entryRegex = RegExp("<entry>(.+?)<\/entry>", "sig");
 // const mediaRegex = RegExp("media:thumbnail url=[\"'](.+jpg)[\"']", "i");
 
-module.exports.getVideos = async (req, res) => {
-    const channelUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=" + req.params.id;
+module.exports.getVideos = async (channelId) => {
+    const channelUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=" + channelId;
     const xml = await getRequest(channelUrl);
 
     const entries = Array.from(xml.matchAll(entryRegex), m => m[1]);
@@ -21,7 +21,7 @@ module.exports.getVideos = async (req, res) => {
         return { id, title, url, thumbnail, description, views, published, updated };
     });
 
-    res.status(200).send(videos);
+    return { success: true, code: 200, payload: videos };
 };
 
 const parseTagContent = (tag, str) => {
